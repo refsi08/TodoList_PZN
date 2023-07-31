@@ -36,7 +36,7 @@ namespace Service {
 
             //logic menampilkan data
             foreach ($todolist as $index => $value) {
-                echo "$index. ". $value->getTodo() . PHP_EOL;
+                echo "$index. " . $value->getTodo() . PHP_EOL;
             }
         }
 
@@ -49,6 +49,11 @@ namespace Service {
 
         function removeTodoList(int $number): void
         {
+            if ($this->todolistRepository->remove($number)) {
+                echo "Sukses Menghapus TodoList" . PHP_EOL;
+            } else {
+                echo "Gagal Menghapus TodoList" . PHP_EOL;
+            }
         }
     }
 }

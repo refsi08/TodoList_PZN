@@ -23,8 +23,21 @@ namespace Repository {
             $this->todoList[$number] = $todoList; // memasukkan data todo kedalam variabel todolist
         }
 
-        function remove(int $number): bool
+        function remove(int $todoNumber): bool
         {
+            // validation
+            if ($todoNumber > sizeof($this->todoList)) {
+                return false;
+            }
+
+            // menggeser data yang ingin dihapus
+            for ($i = $todoNumber; $i < sizeof($this->todoList); $i++) {
+                $this->todoList[$i] = $this->todoList[$i + 1];
+            }
+
+            unset($this->todoList[sizeof($this->todoList)]);
+
+            return true;
         }
 
         function findAll(): array
