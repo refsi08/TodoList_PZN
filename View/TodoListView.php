@@ -39,6 +39,16 @@ namespace View {
 
         function addTodoList(): void
         {
+            echo "Menambah TODO" . PHP_EOL;
+
+            // masukkan function input data
+            $inputTodo = InputHelper::input("Masukkan Todo (x untuk batal)");
+
+            if ($inputTodo == "x") {
+                echo "Batal Menambahkan todo" . PHP_EOL;
+            } else {
+                $this->todoListService->addTodoList($inputTodo);
+            }
         }
 
         function removeTodoList(): void
