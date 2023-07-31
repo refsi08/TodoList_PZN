@@ -1,26 +1,20 @@
 <?php
-// Import Model
-require_once "Model/Todolist.php";
 
-// Import Business Logic
-require_once "BusinessLogic/ShowTodoList.php";
-require_once "BusinessLogic/AddTodoList.php";
-require_once "BusinessLogic/RemoveTodoList.php";
+use Repository\TodoListRepositoryImpl;
+use Service\TodolistserviceImpl;
+use View\TodoListView;
 
-// Import View
-require_once "BusinessLogic/ShowTodoList.php";
-require_once "BusinessLogic/AddTodoList.php";
-require_once "Model/Todolist.php";
-require_once "Helper/InputData.php";
-require_once "View/ViewAddTodoList.php";
-require_once "View/ViewRemoveTodoList.php";
-require_once "View/ViewShowTodoList.php";
-
-// Data Sementara
-addTodoList("Belajar PHP Dasar");
-addTodoList("Belajar Dart Dasar");
-addTodoList("Belajar Javascript Dasar");
-addTodoList("Belajar HTML Dasar");
+require_once "Entity/TodoList.php";
+require_once "Helper/InputHelper.php";
+require_once "Repository/TodoListRepository.php";
+require_once "Service/TodoListService.php";
+require_once "View/TodoListView.php";
 
 
-viewShowTodoList();
+echo "APLIKASI TODOLIST";
+
+$todoListRepository = new TodoListRepositoryImpl();
+$todoListService = new TodolistserviceImpl($todoListRepository);
+$todoListView = new TodoListView($todoListService);
+
+$todoListView->showTodoList();
