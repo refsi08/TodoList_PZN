@@ -27,7 +27,7 @@ testShowTodoList();
 function testAddTodoList(): void
 {
     $todoListRepository = new TodoListRepositoryImpl();
-    
+
     $todoListService = new TodolistserviceImpl($todoListRepository);
     $todoListService->addTodoList("Belajar PHP");
     $todoListService->addTodoList("Belajar Dart");
@@ -37,3 +37,22 @@ function testAddTodoList(): void
 }
 
 testAddTodoList();
+
+// test remove
+function testRemoveTodoList(): void
+{
+    $todoListRepository = new TodoListRepositoryImpl();
+
+    $todoListService = new TodolistserviceImpl($todoListRepository);
+    $todoListService->addTodoList("Belajar PHP");
+    $todoListService->addTodoList("Belajar Dart");
+    $todoListService->addTodoList("Belajar Java");
+
+    $todoListService->showTodoList();
+
+    $todoListService->removeTodoList(4);
+
+    $todoListService->showTodoList();
+}
+
+testRemoveTodoList();
