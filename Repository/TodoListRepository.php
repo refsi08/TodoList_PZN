@@ -19,6 +19,8 @@ namespace Repository {
 
         function save(TodoList $todoList): void
         {
+            $number = sizeof($this->todoList) + 1; // memeriksa jumlah data array ditambahkan 1
+            $this->todoList[$number] = $todoList; // memasukkan data todo kedalam variabel todolist
         }
 
         function remove(int $number): bool
